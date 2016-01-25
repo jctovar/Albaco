@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Albaco.Customer">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACBAAAACAAAAAAIAAAAAQQQAAAAAAAAAAAIAAIAAE=</HashCode>
+      <FileName>Customer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.CustomerDB">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAABAAAAAAAACAAAAAAIAAAAAABAAA=</HashCode>
+      <FileName>CustomerDB.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.Product">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAGBAAAAQAgAAQAAAAgAAwAAIAAAAAAASAAAQAACAA=</HashCode>
+      <FileName>Product.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.ProductDB">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAQAiAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ProductDB.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.MySqlDataBase">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>MySqlDataBase.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.User">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACBAAAACAAAAAAAQAAAAQAAAAAAAACAAAAKAAAAQE=</HashCode>
+      <FileName>User.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.UserDB">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAACAAAAAAAgEAAAAAEAAAA=</HashCode>
+      <FileName>UserDB.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.Invoice">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Invoice.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.Store">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAASBAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAIAAAAAA=</HashCode>
+      <FileName>Store.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.InvoiceDB">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>InvoiceDB.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.StoreDB">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEAKAA=</HashCode>
+      <FileName>StoreDB.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.Category">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Category.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Albaco.CategoryDB">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAYAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAg=</HashCode>
+      <FileName>CategoryDB.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
