@@ -34,8 +34,8 @@ Public Class InvoiceDB
             "FROM invoice t1 INNER JOIN customer t2 INNER JOIN account t3 " &
             "ON t1.customer_id = t2.customer_id AND t1.account_id = t3.account_id " &
             "ORDER BY invoice_timestamp DESC"
-
         Dim dbcommand = New MySqlCommand(Sql, Connection)
+
         Try
             Connection.Open()
 

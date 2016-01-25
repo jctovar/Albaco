@@ -149,7 +149,7 @@ Public Class InvoicesAdmin
 
     Private Sub InvoicesAdmin_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         If Me.Conn = True Then
-            Me.FillDatagrid()
+            'Me.FillDatagrid()
         End If
     End Sub
 

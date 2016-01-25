@@ -15,7 +15,6 @@ Public Class MySqlDataBase
             ' Intenta hacer la conexion a la base de datos
             dbconn.Open()
         Catch ex As Exception
-            'MsgBox(ex.Message, MessageBoxIcon.Error)
             Throw ex
         End Try
 
