@@ -8,9 +8,9 @@
     Public Sub FillDatagrid()
         Dim tableview As New DataTable
 
-        tableview = StoreDB.GetAllStores
-
         Try
+            tableview = StoreDB.GetAllStores
+
             Me.Cursor = System.Windows.Forms.Cursors.WaitCursor
             txtStatus.Text = String.Format("Se encontraron {0} registros", tableview.Rows.Count)
 
@@ -20,7 +20,7 @@
             DataGridView1.Columns(0).Visible = False
             DataGridView1.Refresh()
         Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.GetType.ToString)
+            txtStatus.Text = String.Format("Se encontraron {0} registros", tableview.Rows.Count)
         Finally
             Me.Cursor = System.Windows.Forms.Cursors.Default
         End Try
@@ -31,7 +31,7 @@
 
         frmStore.addStore = True
 
-        Dim result As DialogResult = frmStore.showdialog()
+        Dim result As DialogResult = frmStore.ShowDialog()
 
         If result = DialogResult.OK Then
             FillDatagrid()

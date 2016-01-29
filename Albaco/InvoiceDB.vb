@@ -3,12 +3,15 @@
 Public Class InvoiceDB
     Public Shared Function GetInvoice(invoiceID As Integer) As User
         Dim user As New User
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "SELECT * FROM caja.accounts WHERE account_id = @account_id"
-        Dim dbcommand As New MySqlCommand(Sql, MySqlDataBase.GetConnection)
+        Dim dbcommand As New MySqlCommand(Sql, Connection)
 
         dbcommand.Parameters.AddWithValue("@account_id", invoiceID)
 
         Try
+            Connection.Open()
+
             Dim reader As MySqlDataReader = dbcommand.ExecuteReader(CommandBehavior.SingleRow)
             If reader.Read Then
                 user.Name = reader("account_name").ToString
@@ -22,6 +25,8 @@ Public Class InvoiceDB
             reader.Close()
         Catch ex As Exception
             Throw ex
+        Finally
+            Connection.Close()
         End Try
 
         Return user

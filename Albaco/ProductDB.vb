@@ -3,6 +3,7 @@
 Public Class ProductDB
     Public Shared Function GetProduct(productID As Integer) As Product
         Dim product As New Product
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "SELECT * FROM caja.products WHERE product_id = @product_id"
         Dim dbcommand As New MySqlCommand(Sql, MySqlDataBase.GetConnection)
 
@@ -34,6 +35,7 @@ Public Class ProductDB
 
     Public Shared Function GetAllProducts() As DataTable
         Dim dt = New DataTable()
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "SELECT product_id, category_name AS 'Categoria', product_name As 'Nombre del producto',product_key AS 'Clave',unit_name AS 'Unidad' " &
             "FROM caja.products t1 INNER JOIN caja.categories t2 INNER JOIN caja.units t3 " &
             "ON t1.category_id = t2.category_id AND t1.unit_id = t3.unit_id " &
@@ -59,6 +61,7 @@ Public Class ProductDB
     End Function
 
     Public Shared Function AddProduct(product As Product) As Integer
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "INSERT products " &
             "(category_id,product_name,product_key,product_code,unit_id,type_id,product_tare_weight,product_description,product_price) " &
             "VALUES (@category,@name,@key,@code,@unit,@type,@tare,@description,@price)"
@@ -86,6 +89,7 @@ Public Class ProductDB
     End Function
 
     Public Shared Function UpdateProduct(product As Product) As Boolean
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "UPDATE products " &
             "SET category_id=@category,product_name=@name,product_key=@key,product_code=@code,unit_id=@unit,type_id=@type,product_tare_weight=@tare,product_description=@description,product_price=@price " &
             "WHERE product_id=@id"
@@ -114,6 +118,7 @@ Public Class ProductDB
     End Function
 
     Public Shared Function DeleteProduct(product As Product) As Boolean
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "DELETE FROM products " &
             "WHERE product_id=@id"
         Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)

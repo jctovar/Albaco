@@ -10,7 +10,7 @@
             Me.Text = String.Format("{0} - {1}", Application.ProductName, "Editar almacen")
 
             Me.GetStore(storeID)
-            Me.DisplayUser()
+            Me.DisplayStore()
         End If
     End Sub
 
@@ -55,7 +55,7 @@
         End Try
     End Sub
 
-    Private Sub DisplayUser()
+    Private Sub DisplayStore()
         txtName.Text = store.Name
         txtAddress.Text = store.Address
         txtPhone.Text = store.Phone

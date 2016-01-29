@@ -20,7 +20,8 @@
             DataGridView1.Columns(0).Visible = False
             DataGridView1.Refresh()
         Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.GetType.ToString)
+            'MessageBox.Show(ex.Message, ex.GetType.ToString)
+            txtStatus.Text = String.Format("Se encontraron {0} registros", tableview.Rows.Count)
         Finally
             Me.Cursor = System.Windows.Forms.Cursors.Default
         End Try

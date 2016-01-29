@@ -3,15 +3,18 @@
 Public Class StoreDB
     Public Shared Function GetStore(storeID As Integer) As Store
         Dim store As New Store
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "SELECT * FROM store WHERE store_id = @store_id"
-        Dim dbcommand As New MySqlCommand(Sql, MySqlDataBase.GetConnection)
+        Dim dbcommand As New MySqlCommand(Sql, Connection)
 
         dbcommand.Parameters.AddWithValue("@store_id", storeID)
 
         Try
+            Connection.Open()
+
             Dim reader As MySqlDataReader = dbcommand.ExecuteReader(CommandBehavior.SingleRow)
             If reader.Read Then
-                store.ID = reader("store_id").ToString
+                store.Id = reader("store_id").ToString
                 store.Name = reader("store_name").ToString
                 store.Address = reader("store_address").ToString
                 store.Phone = reader("store_phone").ToString
@@ -21,6 +24,8 @@ Public Class StoreDB
             reader.Close()
         Catch ex As Exception
             Throw ex
+        Finally
+            Connection.Close()
         End Try
 
         Return store
@@ -34,7 +39,7 @@ Public Class StoreDB
         Dim dbcommand = New MySqlCommand(Sql, Connection)
 
         Try
-            ' Connection.Open()
+            Connection.Open()
 
             Dim reader As MySqlDataReader = dbcommand.ExecuteReader()
             If reader.HasRows Then
@@ -50,60 +55,70 @@ Public Class StoreDB
         Return dt
     End Function
 
-    Public Shared Function AddStore(store As Store) As Integer
+    Public Shared Function AddStore(store As Store) As Boolean
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "INSERT store " &
-            "(store_name,store_address,store_phone) " &
-            "VALUES (@name,@address,@phone)"
-        Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
+            "(store_name,store_address,store_phone,company_id) " &
+            "VALUES (@name,@address,@phone,@company)"
+        Dim dbcommand = New MySqlCommand(Sql, Connection)
 
         dbcommand.Parameters.AddWithValue("@name", store.Name)
         dbcommand.Parameters.AddWithValue("@address", store.Address)
         dbcommand.Parameters.AddWithValue("@phone", store.Phone)
+        dbcommand.Parameters.AddWithValue("@company", 1)
 
         Try
+            dbcommand.Connection.Open()
+
             dbcommand.ExecuteNonQuery()
             Return True
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
     End Function
 
     Public Shared Function UpdateStore(store As Store) As Boolean
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "UPDATE store " &
             "SET store_name=@name,store_address=@address,store_phone=@phone " &
             "WHERE store_id=@id"
-        Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
+        Dim dbcommand = New MySqlCommand(Sql, Connection)
 
-        dbcommand.Parameters.AddWithValue("@id", store.ID)
+        dbcommand.Parameters.AddWithValue("@id", store.Id)
         dbcommand.Parameters.AddWithValue("@name", store.Name)
         dbcommand.Parameters.AddWithValue("@address", store.Address)
         dbcommand.Parameters.AddWithValue("@phone", store.Phone)
 
         Try
+            dbcommand.Connection.Open()
+
             dbcommand.ExecuteNonQuery()
             Return True
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
     End Function
 
     Public Shared Function DeleteStore(store As Store) As Boolean
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "DELETE FROM store " &
             "WHERE  store_id=@id AND store_name=@name AND store_address=@address AND store_phone=@phone"
-        Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
+        Dim dbcommand = New MySqlCommand(Sql, Connection)
 
-        dbcommand.Parameters.AddWithValue("@id", store.ID)
+        dbcommand.Parameters.AddWithValue("@id", store.Id)
         dbcommand.Parameters.AddWithValue("@name", store.Name)
         dbcommand.Parameters.AddWithValue("@address", store.Address)
         dbcommand.Parameters.AddWithValue("@phone", store.Phone)
 
         Try
+            dbcommand.Connection.Open()
+
             Dim count As Integer = dbcommand.ExecuteNonQuery()
             If count > 0 Then
                 Return True
@@ -113,7 +128,7 @@ Public Class StoreDB
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
     End Function
 End Class

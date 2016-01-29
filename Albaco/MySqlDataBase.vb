@@ -10,10 +10,8 @@ Public Class MySqlDataBase
 
         If Not dbconn Is Nothing Then dbconn.Close()
         Try
-            'dbconn.ConnectionString = String.Format("server={0}; user id={1}; password={2}; database={3}; UseCompression=true; pooling=false", ServerIP, Username, Password, DatabaseName)
+            ' Arma la cadena de conexion
             dbconn.ConnectionString = String.Format("server={0}; user id={1}; password={2}; database={3}; UseCompression=true", ServerIP, Username, Password, DatabaseName)
-            ' Intenta hacer la conexion a la base de datos
-            dbconn.Open()
         Catch ex As Exception
             Throw ex
         End Try

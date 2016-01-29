@@ -97,6 +97,7 @@ Partial Class CustomerBox
         'txtPostalCode
         '
         Me.txtPostalCode.Location = New System.Drawing.Point(16, 184)
+        Me.txtPostalCode.MaxLength = 5
         Me.txtPostalCode.Name = "txtPostalCode"
         Me.txtPostalCode.Size = New System.Drawing.Size(320, 20)
         Me.txtPostalCode.TabIndex = 7
