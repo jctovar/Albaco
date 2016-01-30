@@ -21,8 +21,11 @@
 
             user.Name = txtName.Text
             user.Username = txtUsername.Text
-            user.Phone = txtPhone.Text
+            user.Password = txtPassword.Text
             user.Email = txtEmail.Text
+            user.Phone = txtPhone.Text
+            user.Status = cmbStatus.Text
+            user.Profile = cmbRol.Text
 
             Try
                 UserDB.AddUser(user)
@@ -37,9 +40,11 @@
             user.Id = userID
             user.Name = txtName.Text
             user.Username = txtUsername.Text
-            user.Phone = txtPhone.Text
+            user.Password = txtPassword.Text
             user.Email = txtEmail.Text
-
+            user.Phone = txtPhone.Text
+            user.Status = cmbStatus.Text
+            user.Profile = cmbRol.Text
             Try
                 UserDB.UpdateUsere(user)
                 Me.DialogResult = DialogResult.OK
@@ -60,8 +65,10 @@
     Private Sub DisplayUser()
         txtName.Text = user.Name
         txtUsername.Text = user.Username
-        'txtPassword.Text = user.Password
-        txtPhone.Text = user.Phone
+        txtPassword.Text = user.Password
+        txtPassword.Text = user.Phone
         txtEmail.Text = user.Email
+        cmbStatus.Text = user.Status
+        cmbRol.Text = user.Profile
     End Sub
 End Class

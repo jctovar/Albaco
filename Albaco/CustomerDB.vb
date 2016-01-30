@@ -2,7 +2,7 @@
 
 Public Class CustomerDB
     Public Shared Function GetCustomer(customerID As Integer) As Customer
-        Dim customer1 As New Customer
+        Dim customer As New Customer
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "SELECT * FROM customer WHERE customer_id = @customer_id"
         Dim dbcommand As New MySqlCommand(Sql, Connection)
@@ -14,14 +14,14 @@ Public Class CustomerDB
 
             Dim reader As MySqlDataReader = dbcommand.ExecuteReader(CommandBehavior.SingleRow)
             If reader.Read Then
-                customer1.Name = reader("customer_name").ToString
-                customer1.Address_1 = reader("customer_address_1").ToString
-                customer1.Address_2 = reader("customer_address_2").ToString
-                customer1.PostalCode = reader("customer_postalcode").ToString
-                customer1.Phone = reader("customer_phone").ToString
-                customer1.Email = reader("customer_email").ToString
+                customer.Name = reader("customer_name").ToString
+                customer.Address_1 = reader("customer_address_1").ToString
+                customer.Address_2 = reader("customer_address_2").ToString
+                customer.PostalCode = reader("customer_postalcode").ToString
+                customer.Phone = reader("customer_phone").ToString
+                customer.Email = reader("customer_email").ToString
             Else
-                customer1 = Nothing
+                customer = Nothing
             End If
             reader.Close()
         Catch ex As Exception
@@ -30,7 +30,7 @@ Public Class CustomerDB
             Connection.Close()
         End Try
 
-        Return customer1
+        Return customer
     End Function
 
     Public Shared Function GetAllCustomers() As DataTable
@@ -87,8 +87,8 @@ Public Class CustomerDB
     Public Shared Function UpdateCustomer(customer As Customer) As Boolean
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "UPDATE customer " &
-            "SET category_name=@name,category_description=@description " &
-            "WHERE category_id=@id"
+            "SET customer_name=@name,customer_address_1=@address_1,customer_address_2=@address_2,customer_postalcode=@postalcode,customer_phone=@phone,customer_email=@email " &
+            "WHERE customer_id=@id"
         Dim dbcommand As New MySqlCommand(Sql, Connection)
 
         dbcommand.Parameters.AddWithValue("@id", customer.Id)

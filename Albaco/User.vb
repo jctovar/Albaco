@@ -5,6 +5,8 @@
     Private varPhone As String
     Private varPassword As String
     Private varEmail As String
+    Private varStatus As Boolean
+    Private varProfile As Integer
 
     Sub New()
 
@@ -61,6 +63,24 @@
         End Get
         Set(value As String)
             Me.varEmail = value
+        End Set
+    End Property
+
+    Public Property Status As Boolean
+        Get
+            Return Me.varStatus
+        End Get
+        Set(value As Boolean)
+            Me.varStatus = value
+        End Set
+    End Property
+
+    Public Property Profile As Integer
+        Get
+            Return Me.varProfile
+        End Get
+        Set(value As Integer)
+            Me.varProfile = value
         End Set
     End Property
 End Class

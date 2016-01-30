@@ -37,6 +37,7 @@
             Dim customer As New Customer
 
             customer.Id = customerID
+            customer.Name = txtName.Text
             customer.Address_1 = txtAddress_1.Text
             customer.Address_2 = txtAddress_2.Text
             customer.PostalCode = txtPostalCode.Text
