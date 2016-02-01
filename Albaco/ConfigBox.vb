@@ -5,7 +5,6 @@
         LoadConfiguration()
 
     End Sub
-
     Private Sub LoadConfiguration()
         ' Asigna los datos de la configuracion de conexion a la base de datos
         txtIP.Text = My.Settings.IP
@@ -18,7 +17,6 @@
         txtTerminal.Text = My.Settings.Terminal
 
     End Sub
-
     Private Sub SaveConfiguration()
         ' Almacena los valores de la configuracion de conexion a la base de datos
         My.Settings.IP = txtIP.Text
@@ -31,7 +29,6 @@
         My.Settings.Terminal = txtTerminal.Text
 
     End Sub
-
     Private Sub btnAcept_Click(sender As Object, e As EventArgs) Handles btnAcept.Click
         Try
             SaveConfiguration()
@@ -42,6 +39,5 @@
         End Try
 
         Me.Close()
-
     End Sub
 End Class

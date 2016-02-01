@@ -4,7 +4,6 @@
 
         Me.FillDatagrid()
     End Sub
-
     Public Sub FillDatagrid()
         Dim tableview As New DataTable
 
@@ -25,7 +24,6 @@
             Me.Cursor = System.Windows.Forms.Cursors.Default
         End Try
     End Sub
-
     Private Sub AddCustomer()
         Dim frmCustomer As New CustomerBox
 
@@ -37,7 +35,6 @@
             FillDatagrid()
         End If
     End Sub
-
     Private Sub UpdateCustomer()
         Dim frmCustomer As New CustomerBox
 
@@ -50,7 +47,6 @@
             FillDatagrid()
         End If
     End Sub
-
     Private Sub DeleteCustomer()
         If MessageBox.Show("Esta seguro de eliminar el registro?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
             Dim customer As New Customer
@@ -66,27 +62,21 @@
             End If
         End If
     End Sub
-
     Private Sub EditarToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EditarToolStripMenuItem1.Click
         Me.UpdateCustomer()
     End Sub
-
     Private Sub EliminarToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem1.Click
         Me.DeleteCustomer()
     End Sub
-
     Private Sub NuevoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NuevoToolStripMenuItem1.Click
         Me.AddCustomer()
     End Sub
-
     Private Sub CerrarToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CerrarToolStripMenuItem1.Click
         Me.Close()
     End Sub
-
     Private Sub DataGridView1_DoubleClick(sender As Object, e As EventArgs) Handles DataGridView1.DoubleClick
         Me.UpdateCustomer()
     End Sub
-
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
         If e.KeyValue = Keys.Space Then
             Me.UpdateCustomer()

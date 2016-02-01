@@ -1,5 +1,4 @@
 ﻿Imports MySql.Data.MySqlClient
-
 Public Class CustomerDB
     Public Shared Function GetCustomer(customerID As Integer) As Customer
         Dim customer As New Customer
@@ -32,7 +31,6 @@ Public Class CustomerDB
 
         Return customer
     End Function
-
     Public Shared Function GetAllCustomers() As DataTable
         Dim dt = New DataTable()
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
@@ -57,7 +55,6 @@ Public Class CustomerDB
 
         Return dt
     End Function
-
     Public Shared Function AddCustomer(customer As Customer) As Integer
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "INSERT customer " &
@@ -83,7 +80,6 @@ Public Class CustomerDB
             Connection.Close()
         End Try
     End Function
-
     Public Shared Function UpdateCustomer(customer As Customer) As Boolean
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "UPDATE customer " &
@@ -110,7 +106,6 @@ Public Class CustomerDB
             Connection.Close()
         End Try
     End Function
-
     Public Shared Function DeleteCustomer(customer As Customer) As Boolean
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "DELETE FROM customer " &

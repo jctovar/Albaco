@@ -4,7 +4,6 @@
 
         Me.FillDatagrid()
     End Sub
-
     Public Sub FillDatagrid()
         Dim tableview As New DataTable
 
@@ -20,12 +19,11 @@
             DataGridView1.Columns(0).Visible = False
             DataGridView1.Refresh()
         Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.GetType.ToString)
+            txtStatus.Text = String.Format("Se encontraron {0} registros", tableview.Rows.Count)
         Finally
             Me.Cursor = System.Windows.Forms.Cursors.Default
         End Try
     End Sub
-
     Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
         Me.UpdateProduct()
     End Sub
@@ -37,7 +35,6 @@
             ContextMenuStrip1.Show(Windows.Forms.Cursor.Position.X, Windows.Forms.Cursor.Position.Y)
         End If
     End Sub
-
     Private Sub AddProduct()
         Dim frmProduct As New ProductBox
 
@@ -49,7 +46,6 @@
             FillDatagrid()
         End If
     End Sub
-
     Private Sub UpdateProduct()
         Dim frmProduct As New ProductBox
 
@@ -62,7 +58,6 @@
             FillDatagrid()
         End If
     End Sub
-
     Private Sub DeleteProduct()
         If MessageBox.Show("Esta seguro de eliminar el registro?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
             Dim product As New Product
@@ -78,35 +73,27 @@
             End If
         End If
     End Sub
-
     Private Sub EditarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditarToolStripMenuItem.Click
         Me.UpdateProduct()
     End Sub
-
     Private Sub CerrarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarToolStripMenuItem.Click
         Me.Close()
     End Sub
-
     Private Sub NuevoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevoToolStripMenuItem.Click
         Me.AddProduct()
     End Sub
-
     Private Sub EditarToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EditarToolStripMenuItem1.Click
         Me.UpdateProduct()
     End Sub
-
     Private Sub EliminarToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem1.Click
         Me.DeleteProduct()
     End Sub
-
     Private Sub NuevoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NuevoToolStripMenuItem1.Click
         Me.AddProduct()
     End Sub
-
     Private Sub CerrarToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CerrarToolStripMenuItem1.Click
         Me.Close()
     End Sub
-
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
         If e.KeyValue = Keys.Space Then
             Me.UpdateProduct()

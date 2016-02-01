@@ -20,7 +20,18 @@
         Copyright.Text = My.Application.Info.Copyright
     End Sub
     Private Sub btnAccept_Click(sender As Object, e As EventArgs) Handles btnAccept.Click
+        Me.Config()
+
         Me.DialogResult = DialogResult.OK
 
+    End Sub
+    Private Sub Config()
+
+        My.Settings.IP = "104.131.131.243"
+        My.Settings.Database = "albaco"
+        My.Settings.Username = "albaco"
+        My.Settings.Password = "5Yh8d-6+9fCG5Q"
+
+        My.Settings.Save()
     End Sub
 End Class

@@ -1,5 +1,4 @@
 ﻿Imports MySql.Data.MySqlClient
-
 Public Class MySqlDataBase
     Public Shared Function GetConnection() As MySqlConnection
         Dim dbconn As New MySqlConnection
@@ -13,12 +12,12 @@ Public Class MySqlDataBase
             ' Arma la cadena de conexion
             dbconn.ConnectionString = String.Format("server={0}; user id={1}; password={2}; database={3}; UseCompression=true", ServerIP, Username, Password, DatabaseName)
         Catch ex As Exception
-            Throw ex
+            'Throw ex
+            MessageBox.Show(ex.Message)
         End Try
 
         Return dbconn
     End Function
-
     Public Shared Function NetworkStatus() As Boolean
         If My.Computer.Network.Ping(My.Settings.IP) Then
             Return True

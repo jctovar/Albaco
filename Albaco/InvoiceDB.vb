@@ -1,5 +1,4 @@
 ﻿Imports MySql.Data.MySqlClient
-
 Public Class InvoiceDB
     Public Shared Function GetInvoice(invoiceID As Integer) As User
         Dim user As New User
@@ -31,7 +30,6 @@ Public Class InvoiceDB
 
         Return user
     End Function
-
     Public Shared Function GetAllInvoices() As DataTable
         Dim dt = New DataTable()
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection

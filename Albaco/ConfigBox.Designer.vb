@@ -33,14 +33,14 @@ Partial Class ConfigBox
         Me.txtIP = New System.Windows.Forms.TextBox()
         Me.lblIP = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.txtTerminal = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.txtRFC = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtRazon = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnAcept = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
-        Me.txtTerminal = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -76,16 +76,15 @@ Partial Class ConfigBox
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(93, 101)
+        Me.txtPassword.Location = New System.Drawing.Point(8, 176)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPassword.Size = New System.Drawing.Size(226, 20)
+        Me.txtPassword.Size = New System.Drawing.Size(312, 20)
         Me.txtPassword.TabIndex = 7
         '
         'lblPassword
         '
         Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(6, 104)
+        Me.lblPassword.Location = New System.Drawing.Point(8, 160)
         Me.lblPassword.Name = "lblPassword"
         Me.lblPassword.Size = New System.Drawing.Size(61, 13)
         Me.lblPassword.TabIndex = 6
@@ -93,15 +92,15 @@ Partial Class ConfigBox
         '
         'txtUsername
         '
-        Me.txtUsername.Location = New System.Drawing.Point(93, 75)
+        Me.txtUsername.Location = New System.Drawing.Point(8, 128)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(226, 20)
+        Me.txtUsername.Size = New System.Drawing.Size(312, 20)
         Me.txtUsername.TabIndex = 5
         '
         'lblUsername
         '
         Me.lblUsername.AutoSize = True
-        Me.lblUsername.Location = New System.Drawing.Point(6, 78)
+        Me.lblUsername.Location = New System.Drawing.Point(8, 112)
         Me.lblUsername.Name = "lblUsername"
         Me.lblUsername.Size = New System.Drawing.Size(43, 13)
         Me.lblUsername.TabIndex = 4
@@ -109,15 +108,15 @@ Partial Class ConfigBox
         '
         'txtDatabase
         '
-        Me.txtDatabase.Location = New System.Drawing.Point(93, 49)
+        Me.txtDatabase.Location = New System.Drawing.Point(8, 80)
         Me.txtDatabase.Name = "txtDatabase"
-        Me.txtDatabase.Size = New System.Drawing.Size(226, 20)
+        Me.txtDatabase.Size = New System.Drawing.Size(312, 20)
         Me.txtDatabase.TabIndex = 3
         '
         'lblDatabase
         '
         Me.lblDatabase.AutoSize = True
-        Me.lblDatabase.Location = New System.Drawing.Point(6, 52)
+        Me.lblDatabase.Location = New System.Drawing.Point(8, 64)
         Me.lblDatabase.Name = "lblDatabase"
         Me.lblDatabase.Size = New System.Drawing.Size(75, 13)
         Me.lblDatabase.TabIndex = 2
@@ -125,15 +124,15 @@ Partial Class ConfigBox
         '
         'txtIP
         '
-        Me.txtIP.Location = New System.Drawing.Point(93, 23)
+        Me.txtIP.Location = New System.Drawing.Point(8, 32)
         Me.txtIP.Name = "txtIP"
-        Me.txtIP.Size = New System.Drawing.Size(226, 20)
+        Me.txtIP.Size = New System.Drawing.Size(312, 20)
         Me.txtIP.TabIndex = 1
         '
         'lblIP
         '
         Me.lblIP.AutoSize = True
-        Me.lblIP.Location = New System.Drawing.Point(6, 26)
+        Me.lblIP.Location = New System.Drawing.Point(8, 16)
         Me.lblIP.Name = "lblIP"
         Me.lblIP.Size = New System.Drawing.Size(74, 13)
         Me.lblIP.TabIndex = 0
@@ -154,6 +153,22 @@ Partial Class ConfigBox
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Datos del usuario"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'txtTerminal
+        '
+        Me.txtTerminal.Location = New System.Drawing.Point(93, 75)
+        Me.txtTerminal.Name = "txtTerminal"
+        Me.txtTerminal.Size = New System.Drawing.Size(226, 20)
+        Me.txtTerminal.TabIndex = 7
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 78)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(47, 13)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "Terminal"
         '
         'txtRFC
         '
@@ -206,22 +221,6 @@ Partial Class ConfigBox
         Me.btnCancel.TabIndex = 2
         Me.btnCancel.Text = "Cancelar"
         Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'txtTerminal
-        '
-        Me.txtTerminal.Location = New System.Drawing.Point(93, 75)
-        Me.txtTerminal.Name = "txtTerminal"
-        Me.txtTerminal.Size = New System.Drawing.Size(226, 20)
-        Me.txtTerminal.TabIndex = 7
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 78)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(47, 13)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Terminal"
         '
         'ConfigBox
         '

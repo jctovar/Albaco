@@ -5,13 +5,11 @@
     Private varPhone As String
     Private varPassword As String
     Private varEmail As String
-    Private varStatus As Boolean
+    Private varStatus As Integer
     Private varProfile As Integer
-
     Sub New()
 
     End Sub
-
     Public Property Id As Integer
         Get
             Return Me.varId
@@ -20,7 +18,6 @@
             Me.varId = value
         End Set
     End Property
-
     Public Property Name As String
         Get
             Return Me.varName
@@ -29,7 +26,6 @@
             Me.varName = value
         End Set
     End Property
-
     Public Property Username As String
         Get
             Return Me.varUsername
@@ -38,7 +34,6 @@
             Me.varUsername = value
         End Set
     End Property
-
     Public Property Password As String
         Get
             Return Me.varPassword
@@ -47,7 +42,6 @@
             Me.varPassword = value
         End Set
     End Property
-
     Public Property Phone As String
         Get
             Return Me.varPhone
@@ -56,7 +50,6 @@
             Me.varPhone = value
         End Set
     End Property
-
     Public Property Email As String
         Get
             Return Me.varEmail
@@ -65,16 +58,14 @@
             Me.varEmail = value
         End Set
     End Property
-
-    Public Property Status As Boolean
+    Public Property Status As Integer
         Get
             Return Me.varStatus
         End Get
-        Set(value As Boolean)
+        Set(value As Integer)
             Me.varStatus = value
         End Set
     End Property
-
     Public Property Profile As Integer
         Get
             Return Me.varProfile

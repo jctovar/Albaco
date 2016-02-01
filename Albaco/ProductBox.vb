@@ -80,13 +80,13 @@
     End Sub
 
     Private Sub GetUnitsList()
-        cmbUnits.DataSource = ProductDB.GetUnitsLists
+        cmbUnits.DataSource = ProductDB.GetUnitsList
         cmbUnits.DisplayMember = "unit_name"
         cmbUnits.ValueMember = "unit_id"
     End Sub
 
     Private Sub GetTypesList()
-        cmbType.DataSource = ProductDB.GetTypeLists
+        cmbType.DataSource = ProductDB.GetTypeList
         cmbType.DisplayMember = "type_name"
         cmbType.ValueMember = "type_id"
     End Sub

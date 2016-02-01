@@ -1,8 +1,6 @@
 ﻿Imports System.ComponentModel
-
 Public Class InvoicesAdmin
     Public Conn As Boolean = True
-
     Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If My.Settings.Razon = "" Then My.Settings.Razon = "Razón social"
 
@@ -20,26 +18,22 @@ Public Class InvoicesAdmin
 
         frmAbout.ShowDialog()
     End Sub
-
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
         Dim frmCustomers As New CustomerSearch
 
         frmCustomers.ShowDialog()
     End Sub
-
     Private Sub ProductosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductosToolStripMenuItem.Click
         Dim frmProducts As New ProductSearch
 
         frmProducts.ShowDialog()
     End Sub
-
     Private Sub Main_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If MessageBox.Show("Esta seguro de cerrar la aplicación?", Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.No Then
             ' Cancel the Closing event from closing the form.
             e.Cancel = True
         End If
     End Sub
-
     Private Sub ConfigurarPaginaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConfigurarPaginaToolStripMenuItem.Click
         ' Initialize the dialog's PrinterSettings property to hold user
         ' defined printer settings.
@@ -70,19 +64,16 @@ Public Class InvoicesAdmin
 
         End If
     End Sub
-
     Private Sub NuevoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevoToolStripMenuItem.Click
         Dim frmInvoice As New InvoiceBox
 
         frmInvoice.ShowDialog()
     End Sub
-
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
         Dim frmInvoice As New InvoiceBox
 
         frmInvoice.ShowDialog()
     End Sub
-
     Public Sub FillDatagrid()
         Dim tableview As New DataTable
 
@@ -103,13 +94,11 @@ Public Class InvoicesAdmin
             Me.Cursor = System.Windows.Forms.Cursors.Default
         End Try
     End Sub
-
     Private Sub OpcionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpcionesToolStripMenuItem.Click
         Dim frmConfig As New ConfigBox
 
         frmConfig.ShowDialog()
     End Sub
-
     Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
         Dim rowindex As Integer
         Dim frmProduct As New ProductBox
@@ -120,25 +109,21 @@ Public Class InvoicesAdmin
         frmProduct.ShowDialog()
 
     End Sub
-
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
         Dim frmUsers As New UserSearch
 
         frmUsers.ShowDialog()
     End Sub
-
     Private Sub AlmacenesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlmacenesToolStripMenuItem.Click
         Dim frmStores As New StoreSearch
 
         frmStores.ShowDialog()
     End Sub
-
     Private Sub CategoríasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategoríasToolStripMenuItem.Click
         Dim frmCategories As New CategorySearch
 
         frmCategories.ShowDialog()
     End Sub
-
     Private Sub DataGridView1_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridView1.MouseClick
         If e.Button = Windows.Forms.MouseButtons.Left Then
             'MsgBox("You have performed Left Mouse Click")
@@ -146,13 +131,11 @@ Public Class InvoicesAdmin
             ContextMenuStrip1.Show(Windows.Forms.Cursor.Position.X, Windows.Forms.Cursor.Position.Y)
         End If
     End Sub
-
     Private Sub InvoicesAdmin_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         If Me.Conn = True Then
-            'Me.FillDatagrid()
+            Me.FillDatagrid()
         End If
     End Sub
-
     Private Sub tmrNetwork_Tick(sender As Object, e As EventArgs) Handles tmrNetwork.Tick
         If MySqlDataBase.NetworkStatus() = True Then
             txtNetwork.Text = "Existe conexión al servidor"

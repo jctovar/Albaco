@@ -25,6 +25,12 @@ Partial Class UserBox
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnAccept = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtPhone = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cmbRol = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.txtName = New System.Windows.Forms.TextBox()
@@ -33,12 +39,6 @@ Partial Class UserBox
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.cmbStatus = New System.Windows.Forms.ComboBox()
-        Me.cmbRol = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtPhone = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -84,6 +84,59 @@ Partial Class UserBox
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del usuario"
+        '
+        'txtPhone
+        '
+        Me.txtPhone.Location = New System.Drawing.Point(16, 232)
+        Me.txtPhone.MaxLength = 10
+        Me.txtPhone.Name = "txtPhone"
+        Me.txtPhone.Size = New System.Drawing.Size(320, 20)
+        Me.txtPhone.TabIndex = 13
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(16, 216)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(49, 13)
+        Me.Label7.TabIndex = 12
+        Me.Label7.Text = "Telefono"
+        '
+        'cmbRol
+        '
+        Me.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbRol.FormattingEnabled = True
+        Me.cmbRol.Location = New System.Drawing.Point(16, 331)
+        Me.cmbRol.Name = "cmbRol"
+        Me.cmbRol.Size = New System.Drawing.Size(320, 21)
+        Me.cmbRol.TabIndex = 11
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(16, 315)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(30, 13)
+        Me.Label6.TabIndex = 10
+        Me.Label6.Text = "Perfil"
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(16, 280)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(320, 21)
+        Me.cmbStatus.TabIndex = 9
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(16, 264)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(51, 13)
+        Me.Label5.TabIndex = 8
+        Me.Label5.Text = "Situación"
         '
         'txtEmail
         '
@@ -150,57 +203,6 @@ Partial Class UserBox
         Me.Label1.Size = New System.Drawing.Size(43, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Usuario"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(16, 264)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(51, 13)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Situación"
-        '
-        'cmbStatus
-        '
-        Me.cmbStatus.FormattingEnabled = True
-        Me.cmbStatus.Location = New System.Drawing.Point(16, 280)
-        Me.cmbStatus.Name = "cmbStatus"
-        Me.cmbStatus.Size = New System.Drawing.Size(320, 21)
-        Me.cmbStatus.TabIndex = 9
-        '
-        'cmbRol
-        '
-        Me.cmbRol.FormattingEnabled = True
-        Me.cmbRol.Location = New System.Drawing.Point(16, 331)
-        Me.cmbRol.Name = "cmbRol"
-        Me.cmbRol.Size = New System.Drawing.Size(320, 21)
-        Me.cmbRol.TabIndex = 11
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(16, 315)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(30, 13)
-        Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Perfil"
-        '
-        'txtPhone
-        '
-        Me.txtPhone.Location = New System.Drawing.Point(16, 232)
-        Me.txtPhone.MaxLength = 10
-        Me.txtPhone.Name = "txtPhone"
-        Me.txtPhone.Size = New System.Drawing.Size(320, 20)
-        Me.txtPhone.TabIndex = 13
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(16, 216)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(49, 13)
-        Me.Label7.TabIndex = 12
-        Me.Label7.Text = "Telefono"
         '
         'UserBox
         '

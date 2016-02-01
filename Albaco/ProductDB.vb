@@ -1,15 +1,16 @@
 ﻿Imports MySql.Data.MySqlClient
-
 Public Class ProductDB
     Public Shared Function GetProduct(productID As Integer) As Product
         Dim product As New Product
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
-        Dim Sql As String = "SELECT * FROM caja.products WHERE product_id = @product_id"
+        Dim Sql As String = "SELECT * FROM product WHERE product_id = @product_id"
         Dim dbcommand As New MySqlCommand(Sql, MySqlDataBase.GetConnection)
 
         dbcommand.Parameters.AddWithValue("@product_id", productID)
 
         Try
+            Connection.Open()
+
             Dim reader As MySqlDataReader = dbcommand.ExecuteReader(CommandBehavior.SingleRow)
             If reader.Read Then
                 product.Id = reader("product_id").ToString
@@ -28,41 +29,41 @@ Public Class ProductDB
             reader.Close()
         Catch ex As Exception
             Throw ex
+        Finally
+            Connection.Close()
         End Try
 
         Return product
     End Function
-
     Public Shared Function GetAllProducts() As DataTable
         Dim dt = New DataTable()
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "SELECT product_id, category_name AS 'Categoria', product_name As 'Nombre del producto',product_key AS 'Clave',unit_name AS 'Unidad' " &
-            "FROM caja.products t1 INNER JOIN caja.categories t2 INNER JOIN caja.units t3 " &
+            "FROM product t1 INNER JOIN category t2 INNER JOIN unit t3 " &
             "ON t1.category_id = t2.category_id AND t1.unit_id = t3.unit_id " &
             "ORDER BY t1.category_id"
 
-        Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
+        Dim dbcommand = New MySqlCommand(Sql, Connection)
 
         Try
+            Connection.Open()
+
             Dim reader As MySqlDataReader = dbcommand.ExecuteReader()
             If reader.HasRows Then
                 dt.Load(reader)
-            Else
-                reader = Nothing
             End If
             reader.Close()
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
         Return dt
     End Function
-
     Public Shared Function AddProduct(product As Product) As Integer
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
-        Dim Sql As String = "INSERT products " &
+        Dim Sql As String = "INSERT product " &
             "(category_id,product_name,product_key,product_code,unit_id,type_id,product_tare_weight,product_description,product_price) " &
             "VALUES (@category,@name,@key,@code,@unit,@type,@tare,@description,@price)"
         Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
@@ -83,14 +84,13 @@ Public Class ProductDB
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
     End Function
-
     Public Shared Function UpdateProduct(product As Product) As Boolean
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
-        Dim Sql As String = "UPDATE products " &
+        Dim Sql As String = "UPDATE product " &
             "SET category_id=@category,product_name=@name,product_key=@key,product_code=@code,unit_id=@unit,type_id=@type,product_tare_weight=@tare,product_description=@description,product_price=@price " &
             "WHERE product_id=@id"
         Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
@@ -112,14 +112,13 @@ Public Class ProductDB
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
     End Function
-
     Public Shared Function DeleteProduct(product As Product) As Boolean
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
-        Dim Sql As String = "DELETE FROM products " &
+        Dim Sql As String = "DELETE FROM product " &
             "WHERE product_id=@id"
         Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
         MsgBox(product.Id)
@@ -135,12 +134,12 @@ Public Class ProductDB
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
     End Function
-
     Public Shared Function GetPrices(productID As Integer) As List(Of Price)
         Dim priceList As New List(Of Price)
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "SELECT price_value FROM price " &
             "WHERE product_id=@id " &
             "ORDER BY price_value"
@@ -165,15 +164,15 @@ Public Class ProductDB
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
         Return priceList
     End Function
-
     Public Shared Function GetCategoriesList() As List(Of Category)
         Dim categoryList As New List(Of Category)
-        Dim Sql As String = "SELECT category_id,category_name FROM categories"
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
+        Dim Sql As String = "SELECT category_id,category_name FROM category"
 
         Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
 
@@ -194,15 +193,15 @@ Public Class ProductDB
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
         Return categoryList
     End Function
-
-    Public Shared Function GetUnitsLists() As DataTable
+    Public Shared Function GetUnitsList() As DataTable
         Dim dt = New DataTable()
-        Dim Sql As String = "SELECT unit_id,unit_name FROM units"
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
+        Dim Sql As String = "SELECT unit_id,unit_name FROM unit"
 
         Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
 
@@ -217,19 +216,21 @@ Public Class ProductDB
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
         Return dt
     End Function
-
-    Public Shared Function GetTypeLists() As DataTable
+    Public Shared Function GetTypeList() As DataTable
         Dim dt = New DataTable()
-        Dim Sql As String = "SELECT type_id,type_name FROM types"
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
+        Dim Sql As String = "SELECT type_id,type_name FROM type"
 
-        Dim dbcommand = New MySqlCommand(Sql, MySqlDataBase.GetConnection)
+        Dim dbcommand = New MySqlCommand(Sql, Connection)
 
         Try
+            Connection.Open()
+
             Dim reader As MySqlDataReader = dbcommand.ExecuteReader()
             If reader.HasRows Then
                 dt.Load(reader)
@@ -240,7 +241,7 @@ Public Class ProductDB
         Catch ex As Exception
             Throw ex
         Finally
-            MySqlDataBase.GetConnection.Close()
+            Connection.Close()
         End Try
 
         Return dt

@@ -5,7 +5,6 @@
     Sub New()
 
     End Sub
-
     Public Property Id As Integer
         Get
             Return Me.varId
@@ -14,7 +13,6 @@
             Me.varId = value
         End Set
     End Property
-
     Public Property Price As Double
         Get
             Return Me.varPrice
