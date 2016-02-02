@@ -63,7 +63,7 @@ Partial Class CategoryBox
         Me.GroupBox1.Size = New System.Drawing.Size(360, 224)
         Me.GroupBox1.TabIndex = 11
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Datos de la categoría"
+        Me.GroupBox1.Text = "Datos de la linea"
         '
         'txtName
         '

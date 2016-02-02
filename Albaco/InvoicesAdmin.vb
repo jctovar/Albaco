@@ -70,9 +70,7 @@ Public Class InvoicesAdmin
         frmInvoice.ShowDialog()
     End Sub
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
-        Dim frmInvoice As New InvoiceBox
-
-        frmInvoice.ShowDialog()
+        Me.UpdateInvoice()
     End Sub
     Public Sub FillDatagrid()
         Dim tableview As New DataTable
@@ -141,6 +139,18 @@ Public Class InvoicesAdmin
             txtNetwork.Text = "Existe conexión al servidor"
         Else
             txtNetwork.Text = "Sin conexión al servidor..."
+        End If
+    End Sub
+    Private Sub UpdateInvoice()
+        Dim frmInvoice As New InvoiceBox
+
+        frmInvoice.addProduct = False
+        frmInvoice.invoiceID = DataGridView1(0, DataGridView1.CurrentRow.Index).Value
+
+        Dim result As DialogResult = frmInvoice.ShowDialog()
+
+        If result = DialogResult.OK Then
+            FillDatagrid()
         End If
     End Sub
 End Class

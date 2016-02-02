@@ -44,12 +44,15 @@ Partial Class ProductBox
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.txtPrice3 = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtPrice2 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtPrice1 = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnCancel
@@ -58,7 +61,7 @@ Partial Class ProductBox
         Me.btnCancel.Location = New System.Drawing.Point(296, 536)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(84, 27)
-        Me.btnCancel.TabIndex = 4
+        Me.btnCancel.TabIndex = 26
         Me.btnCancel.Text = "Cancelar"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -67,7 +70,7 @@ Partial Class ProductBox
         Me.btnAccept.Location = New System.Drawing.Point(208, 536)
         Me.btnAccept.Name = "btnAccept"
         Me.btnAccept.Size = New System.Drawing.Size(84, 28)
-        Me.btnAccept.TabIndex = 3
+        Me.btnAccept.TabIndex = 25
         Me.btnAccept.Text = "Aceptar"
         Me.btnAccept.UseMnemonic = False
         Me.btnAccept.UseVisualStyleBackColor = True
@@ -80,7 +83,7 @@ Partial Class ProductBox
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(369, 518)
-        Me.TabControl1.TabIndex = 5
+        Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
@@ -116,7 +119,7 @@ Partial Class ProductBox
         Me.cmbUnits.Location = New System.Drawing.Point(16, 272)
         Me.cmbUnits.Name = "cmbUnits"
         Me.cmbUnits.Size = New System.Drawing.Size(320, 21)
-        Me.cmbUnits.TabIndex = 36
+        Me.cmbUnits.TabIndex = 12
         '
         'Label7
         '
@@ -124,7 +127,7 @@ Partial Class ProductBox
         Me.Label7.Location = New System.Drawing.Point(16, 256)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(41, 13)
-        Me.Label7.TabIndex = 35
+        Me.Label7.TabIndex = 11
         Me.Label7.Text = "Unidad"
         '
         'cmbType
@@ -134,7 +137,7 @@ Partial Class ProductBox
         Me.cmbType.Location = New System.Drawing.Point(16, 224)
         Me.cmbType.Name = "cmbType"
         Me.cmbType.Size = New System.Drawing.Size(320, 21)
-        Me.cmbType.TabIndex = 34
+        Me.cmbType.TabIndex = 10
         '
         'Label6
         '
@@ -142,7 +145,7 @@ Partial Class ProductBox
         Me.Label6.Location = New System.Drawing.Point(16, 208)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(28, 13)
-        Me.Label6.TabIndex = 33
+        Me.Label6.TabIndex = 9
         Me.Label6.Text = "Tipo"
         '
         'CheckBox1
@@ -151,7 +154,7 @@ Partial Class ProductBox
         Me.CheckBox1.Location = New System.Drawing.Point(19, 382)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(76, 17)
-        Me.CheckBox1.TabIndex = 32
+        Me.CheckBox1.TabIndex = 15
         Me.CheckBox1.Text = "Aplica tara"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
@@ -161,7 +164,7 @@ Partial Class ProductBox
         Me.txtTareWeight.Location = New System.Drawing.Point(19, 422)
         Me.txtTareWeight.Name = "txtTareWeight"
         Me.txtTareWeight.Size = New System.Drawing.Size(320, 20)
-        Me.txtTareWeight.TabIndex = 30
+        Me.txtTareWeight.TabIndex = 17
         '
         'cmbCategory
         '
@@ -170,7 +173,7 @@ Partial Class ProductBox
         Me.cmbCategory.Location = New System.Drawing.Point(16, 80)
         Me.cmbCategory.Name = "cmbCategory"
         Me.cmbCategory.Size = New System.Drawing.Size(320, 21)
-        Me.cmbCategory.TabIndex = 29
+        Me.cmbCategory.TabIndex = 4
         '
         'lblCategory
         '
@@ -178,7 +181,7 @@ Partial Class ProductBox
         Me.lblCategory.Location = New System.Drawing.Point(16, 64)
         Me.lblCategory.Name = "lblCategory"
         Me.lblCategory.Size = New System.Drawing.Size(54, 13)
-        Me.lblCategory.TabIndex = 28
+        Me.lblCategory.TabIndex = 3
         Me.lblCategory.Text = "Categoría"
         '
         'txtCode
@@ -187,7 +190,7 @@ Partial Class ProductBox
         Me.txtCode.MaxLength = 50
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Size = New System.Drawing.Size(320, 20)
-        Me.txtCode.TabIndex = 26
+        Me.txtCode.TabIndex = 8
         '
         'txtDescription
         '
@@ -195,7 +198,7 @@ Partial Class ProductBox
         Me.txtDescription.Multiline = True
         Me.txtDescription.Name = "txtDescription"
         Me.txtDescription.Size = New System.Drawing.Size(320, 48)
-        Me.txtDescription.TabIndex = 25
+        Me.txtDescription.TabIndex = 14
         '
         'txtKey
         '
@@ -203,14 +206,14 @@ Partial Class ProductBox
         Me.txtKey.MaxLength = 10
         Me.txtKey.Name = "txtKey"
         Me.txtKey.Size = New System.Drawing.Size(320, 20)
-        Me.txtKey.TabIndex = 21
+        Me.txtKey.TabIndex = 6
         '
         'txtName
         '
         Me.txtName.Location = New System.Drawing.Point(16, 32)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(320, 20)
-        Me.txtName.TabIndex = 20
+        Me.txtName.TabIndex = 2
         '
         'Label5
         '
@@ -218,7 +221,7 @@ Partial Class ProductBox
         Me.Label5.Location = New System.Drawing.Point(16, 160)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(40, 13)
-        Me.Label5.TabIndex = 27
+        Me.Label5.TabIndex = 7
         Me.Label5.Text = "Codigo"
         '
         'Label3
@@ -227,7 +230,7 @@ Partial Class ProductBox
         Me.Label3.Location = New System.Drawing.Point(15, 304)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(63, 13)
-        Me.Label3.TabIndex = 24
+        Me.Label3.TabIndex = 13
         Me.Label3.Text = "Descripción"
         '
         'Label2
@@ -236,7 +239,7 @@ Partial Class ProductBox
         Me.Label2.Location = New System.Drawing.Point(16, 112)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(34, 13)
-        Me.Label2.TabIndex = 23
+        Me.Label2.TabIndex = 5
         Me.Label2.Text = "Clave"
         '
         'Label1
@@ -245,7 +248,7 @@ Partial Class ProductBox
         Me.Label1.Location = New System.Drawing.Point(16, 16)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(50, 13)
-        Me.Label1.TabIndex = 22
+        Me.Label1.TabIndex = 1
         Me.Label1.Text = "Producto"
         '
         'Label4
@@ -254,12 +257,16 @@ Partial Class ProductBox
         Me.Label4.Location = New System.Drawing.Point(19, 406)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(89, 13)
-        Me.Label4.TabIndex = 31
+        Me.Label4.TabIndex = 16
         Me.Label4.Text = "Peso de tara (Kg)"
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.DataGridView1)
+        Me.TabPage2.Controls.Add(Me.txtPrice3)
+        Me.TabPage2.Controls.Add(Me.Label10)
+        Me.TabPage2.Controls.Add(Me.txtPrice2)
+        Me.TabPage2.Controls.Add(Me.Label9)
+        Me.TabPage2.Controls.Add(Me.txtPrice1)
         Me.TabPage2.Controls.Add(Me.Label8)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -269,25 +276,56 @@ Partial Class ProductBox
         Me.TabPage2.Text = "Precios"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'txtPrice3
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(16, 32)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(320, 160)
-        Me.DataGridView1.TabIndex = 1
+        Me.txtPrice3.Location = New System.Drawing.Point(16, 128)
+        Me.txtPrice3.MaxLength = 6
+        Me.txtPrice3.Name = "txtPrice3"
+        Me.txtPrice3.Size = New System.Drawing.Size(328, 20)
+        Me.txtPrice3.TabIndex = 23
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(16, 112)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(80, 13)
+        Me.Label10.TabIndex = 22
+        Me.Label10.Text = "Precio mayoreo"
+        '
+        'txtPrice2
+        '
+        Me.txtPrice2.Location = New System.Drawing.Point(16, 80)
+        Me.txtPrice2.MaxLength = 6
+        Me.txtPrice2.Name = "txtPrice2"
+        Me.txtPrice2.Size = New System.Drawing.Size(328, 20)
+        Me.txtPrice2.TabIndex = 21
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(16, 64)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(108, 13)
+        Me.Label9.TabIndex = 20
+        Me.Label9.Text = "Precio mediomayoreo"
+        '
+        'txtPrice1
+        '
+        Me.txtPrice1.Location = New System.Drawing.Point(16, 32)
+        Me.txtPrice1.MaxLength = 6
+        Me.txtPrice1.Name = "txtPrice1"
+        Me.txtPrice1.Size = New System.Drawing.Size(328, 20)
+        Me.txtPrice1.TabIndex = 19
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Location = New System.Drawing.Point(16, 16)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(104, 13)
-        Me.Label8.TabIndex = 0
-        Me.Label8.Text = "Precios del producto"
+        Me.Label8.Size = New System.Drawing.Size(74, 13)
+        Me.Label8.TabIndex = 18
+        Me.Label8.Text = "Precio publico"
         '
         'ProductBox
         '
@@ -310,7 +348,6 @@ Partial Class ProductBox
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -337,5 +374,9 @@ Partial Class ProductBox
     Friend WithEvents Label7 As Label
     Friend WithEvents cmbUnits As ComboBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents txtPrice3 As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents txtPrice2 As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents txtPrice1 As TextBox
 End Class

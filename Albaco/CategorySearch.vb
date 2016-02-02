@@ -1,6 +1,6 @@
 ﻿Public Class CategorySearch
     Private Sub CategorySearch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Text = String.Format("{0} - {1}", Application.ProductName, "Catalogo de Categorías")
+        Me.Text = String.Format("{0} - {1}", Application.ProductName, "Catalogo de lineas")
 
         Me.FillDatagrid()
     End Sub

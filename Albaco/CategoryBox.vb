@@ -5,9 +5,9 @@
 
     Private Sub CategoryBox_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If addCategory Then
-            Me.Text = String.Format("{0} - {1}", Application.ProductName, "Nueva categoría")
+            Me.Text = String.Format("{0} - {1}", Application.ProductName, "Nueva linea")
         Else
-            Me.Text = String.Format("{0} - {1}", Application.ProductName, "Editar categoría")
+            Me.Text = String.Format("{0} - {1}", Application.ProductName, "Editar linea")
 
             Me.GetCategory(categoryID)
             Me.DisplayCategory()

@@ -3,7 +3,6 @@
     Public productID As Integer
     Private product As Product
     Private price As Price
-
     Private Sub ProductBox_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.GetCategoriesList()
         Me.GetUnitsList()
@@ -18,7 +17,6 @@
             Me.DisplayProduct()
         End If
     End Sub
-
     Private Sub btnAccept_Click(sender As Object, e As EventArgs) Handles btnAccept.Click
         If addProduct Then
             ' Nuevo registro
@@ -26,7 +24,7 @@
 
             product.Category = cmbCategory.SelectedValue.ToString
             product.Name = UCase(txtName.Text)
-            product.Key = txtKey.Text
+            product.Key = UCase(txtKey.Text)
             product.Code = txtCode.Text
             product.Unit = cmbUnits.SelectedValue.ToString
             product.Type = cmbType.SelectedValue.ToString
@@ -37,6 +35,10 @@
             Else
                 product.TareWeight = txtTareWeight.Text
             End If
+
+            product.Price1 = txtPrice1.Text
+            product.Price2 = txtPrice2.Text
+            product.Price3 = txtPrice3.Text
 
             Try
                 ProductDB.AddProduct(product)
@@ -50,13 +52,12 @@
             product.Id = productID
             product.Category = cmbCategory.SelectedValue.ToString
             product.Name = UCase(txtName.Text)
-            product.Key = txtKey.Text
+            product.Key = UCase(txtKey.Text)
             product.Code = txtCode.Text
             product.Unit = cmbUnits.SelectedValue.ToString
             product.Type = cmbType.SelectedValue.ToString
             product.TareWeight = txtTareWeight.Text
             product.Description = txtDescription.Text
-            'product.PriceSell = txtPriceSell.Text
 
             If txtTareWeight.Enabled = False Then
                 product.TareWeight = 0
@@ -64,46 +65,41 @@
                 product.TareWeight = txtTareWeight.Text
             End If
 
+            product.Price1 = txtPrice1.Text
+            product.Price2 = txtPrice2.Text
+            product.Price3 = txtPrice3.Text
+
             Try
-                ProductDB.UpdateProduct(product)
+                Dim id As Integer = ProductDB.UpdateProduct(product)
+
                 Me.DialogResult = DialogResult.OK
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.GetType.ToString)
             End Try
         End If
     End Sub
-
     Private Sub GetCategoriesList()
         cmbCategory.DataSource = ProductDB.GetCategoriesList
         cmbCategory.DisplayMember = "Name"
         cmbCategory.ValueMember = "Id"
     End Sub
-
     Private Sub GetUnitsList()
         cmbUnits.DataSource = ProductDB.GetUnitsList
         cmbUnits.DisplayMember = "unit_name"
         cmbUnits.ValueMember = "unit_id"
     End Sub
-
     Private Sub GetTypesList()
         cmbType.DataSource = ProductDB.GetTypeList
         cmbType.DisplayMember = "type_name"
         cmbType.ValueMember = "type_id"
     End Sub
-
-    Private Sub getPricesList()
-
-    End Sub
-
     Private Sub GetProduct(productID As Integer)
         Try
             product = ProductDB.GetProduct(productID)
-            DataGridView1.DataSource = ProductDB.GetPrices(productID)
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.GetType.ToString)
         End Try
     End Sub
-
     Private Sub DisplayProduct()
         txtName.Text = product.Name
         txtKey.Text = product.Key
@@ -119,17 +115,20 @@
             txtTareWeight.Enabled = True
         End If
 
+        txtPrice1.Text = product.Price1
+        txtPrice2.Text = product.Price2
+        txtPrice3.Text = product.Price3
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) 
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Me.Close()
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         If CheckBox1.CheckState = CheckState.Checked Then
             txtTareWeight.Enabled = True
         Else
             txtTareWeight.Enabled = False
         End If
-    End Sub
-
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        Me.Close()
     End Sub
 End Class
