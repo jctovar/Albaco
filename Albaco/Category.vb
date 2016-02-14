@@ -2,11 +2,9 @@
     Private varId As Integer
     Private varName As String
     Private varDescription As String
-
     Sub New()
 
     End Sub
-
     Public Property Id As Integer
         Get
             Return Me.varId
@@ -15,7 +13,6 @@
             Me.varId = value
         End Set
     End Property
-
     Public Property Name As String
         Get
             Return Me.varName
@@ -24,7 +21,6 @@
             Me.varName = value
         End Set
     End Property
-
     Public Property Description As String
         Get
             Return Me.varDescription

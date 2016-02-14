@@ -70,7 +70,7 @@ Public Class InvoicesAdmin
         frmInvoice.ShowDialog()
     End Sub
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
-        Me.UpdateInvoice()
+        Me.AddInvoice()
     End Sub
     Public Sub FillDatagrid()
         Dim tableview As New DataTable
@@ -96,16 +96,6 @@ Public Class InvoicesAdmin
         Dim frmConfig As New ConfigBox
 
         frmConfig.ShowDialog()
-    End Sub
-    Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
-        Dim rowindex As Integer
-        Dim frmProduct As New ProductBox
-
-        rowindex = DataGridView1.CurrentRow.Index
-
-        'frmProduct.SearchProduct(DataGridView1(0, rowindex).Value)
-        frmProduct.ShowDialog()
-
     End Sub
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
         Dim frmUsers As New UserSearch
@@ -141,16 +131,32 @@ Public Class InvoicesAdmin
             txtNetwork.Text = "Sin conexión al servidor..."
         End If
     End Sub
+    Private Sub AddInvoice()
+        Dim frmInvoice As New InvoiceBox
+
+        frmInvoice.addInvoice = True
+
+        Dim result As DialogResult = frmInvoice.ShowDialog()
+
+        If result = DialogResult.OK Then
+            FillDatagrid()
+        End If
+    End Sub
     Private Sub UpdateInvoice()
         Dim frmInvoice As New InvoiceBox
 
-        frmInvoice.addProduct = False
+        frmInvoice.addInvoice = False
         frmInvoice.invoiceID = DataGridView1(0, DataGridView1.CurrentRow.Index).Value
 
         Dim result As DialogResult = frmInvoice.ShowDialog()
 
         If result = DialogResult.OK Then
             FillDatagrid()
+        End If
+    End Sub
+    Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
+        If e.KeyValue = Keys.Space Then
+            Me.UpdateInvoice()
         End If
     End Sub
 End Class

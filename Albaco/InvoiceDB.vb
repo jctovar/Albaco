@@ -1,25 +1,28 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class InvoiceDB
-    Public Shared Function GetInvoice(invoiceID As Integer) As User
-        Dim user As New User
+    Public Shared Function GetInvoice(invoiceID As Integer) As Invoice
+        Dim invoice As New Invoice
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
-        Dim Sql As String = "SELECT * FROM caja.accounts WHERE account_id = @account_id"
+        Dim Sql As String = "SELECT t1.invoice_id,t1.account_id,t1.customer_id,t1.status_id,t1.invoice_timestamp,CONCAT('$ ',FORMAT(SUM(t2.invoice_product_quantity*t2.invoice_product_price),2)) as total " &
+            "FROM invoice t1 INNER JOIN invoice_product t2 ON t1.invoice_id=t2.invoice_id WHERE t1.invoice_id = @id"
         Dim dbcommand As New MySqlCommand(Sql, Connection)
 
-        dbcommand.Parameters.AddWithValue("@account_id", invoiceID)
+        dbcommand.Parameters.AddWithValue("@id", invoiceID)
 
         Try
             Connection.Open()
 
             Dim reader As MySqlDataReader = dbcommand.ExecuteReader(CommandBehavior.SingleRow)
+
             If reader.Read Then
-                user.Name = reader("account_name").ToString
-                user.Username = reader("account_username").ToString
-                user.Password = reader("account_password").ToString
-                user.Phone = reader("account_phone").ToString
-                user.Email = reader("account_email").ToString
+                invoice.Id = reader("invoice_id").ToString
+                invoice.Customer = reader("customer_id").ToString
+                invoice.Account = reader("account_id").ToString
+                invoice.Status = reader("status_id").ToString
+                invoice.Total = reader("total").ToString
+                invoice.Timestamp = reader("invoice_timestamp").ToString
             Else
-                user = Nothing
+                invoice = Nothing
             End If
             reader.Close()
         Catch ex As Exception
@@ -28,7 +31,7 @@ Public Class InvoiceDB
             Connection.Close()
         End Try
 
-        Return user
+        Return invoice
     End Function
     Public Shared Function GetAllInvoices() As DataTable
         Dim dt = New DataTable()
@@ -115,10 +118,10 @@ Public Class InvoiceDB
             MySqlDataBase.GetConnection.Close()
         End Try
     End Function
-    Public Shared Function GetAllProducts(invoiceID As Integer) As DataTable
+    Public Shared Function GetAllProductsOfInvoice(invoiceID As Integer) As DataTable
         Dim dt = New DataTable()
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
-        Dim Sql As String = "SELECT invoice_id,product_name AS 'Producto',CONCAT('$ ',FORMAT(invoice_product_price,2)) AS 'Precio unitario',CONCAT(invoice_product_quantity,' ',unit_name) AS 'Cantidad',CONCAT('$ ',FORMAT((invoice_product_price*invoice_product_quantity),2)) AS 'Subtotal' " &
+        Dim Sql As String = "SELECT t1.invoice_id,t1.product_id,product_name AS 'Producto',CONCAT('$ ',FORMAT(invoice_product_price,2)) AS 'Precio unitario',CONCAT(invoice_product_quantity,' ',unit_name) AS 'Cantidad',CONCAT('$ ',FORMAT((invoice_product_price*invoice_product_quantity),2)) AS 'Subtotal' " &
             "FROM invoice_product t1 INNER JOIN product t2 INNER JOIN unit t3 " &
             "ON t1.product_id = t2.product_id AND t2.unit_id=t3.unit_id " &
             "WHERE invoice_id=@id " &
@@ -126,6 +129,97 @@ Public Class InvoiceDB
         Dim dbcommand = New MySqlCommand(Sql, Connection)
 
         dbcommand.Parameters.AddWithValue("@id", invoiceID)
+
+        Try
+            Connection.Open()
+
+            Dim reader As MySqlDataReader = dbcommand.ExecuteReader()
+            If reader.HasRows Then
+                dt.Load(reader)
+            End If
+            reader.Close()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            Connection.Close()
+        End Try
+
+        Return dt
+    End Function
+    Public Shared Function AddProductToInvoice(invoiceID As Integer, productID As Integer, productQty As Double, productPrice As Double) As Boolean
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
+        Dim Sql As String = "INSERT invoice_product " &
+            "(invoice_id,product_id,invoice_product_quantity,invoice_product_price) " &
+            "VALUES (@invoice,@product,@quantity,@price)"
+        Dim dbcommand As New MySqlCommand(Sql, Connection)
+
+        dbcommand.Parameters.AddWithValue("@invoice", invoiceID)
+        dbcommand.Parameters.AddWithValue("@product", productID)
+        dbcommand.Parameters.AddWithValue("@quantity", productQty)
+        dbcommand.Parameters.AddWithValue("@price", productPrice)
+
+        Try
+            Connection.Open()
+
+            dbcommand.ExecuteNonQuery()
+            Return True
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.GetType.ToString)
+            ' Throw ex
+        Finally
+            Connection.Close()
+        End Try
+    End Function
+    Public Shared Function DeleteProductForomInvoice(invoiceID As Integer, productID As Integer) As Boolean
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
+        Dim Sql As String = "DELETE FROM invoice_product " &
+            "WHERE invoice_id=@invoice AND product_id=@product"
+        Dim dbcommand As New MySqlCommand(Sql, Connection)
+
+        dbcommand.Parameters.AddWithValue("@invoice", invoiceID)
+        dbcommand.Parameters.AddWithValue("@product", productID)
+
+        Try
+            Connection.Open()
+
+            dbcommand.ExecuteNonQuery()
+            Return True
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.GetType.ToString)
+            ' Throw ex
+        Finally
+            Connection.Close()
+        End Try
+    End Function
+    Public Shared Function GetProductsList() As DataTable
+        Dim dt = New DataTable()
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
+        Dim Sql As String = "SELECT product_id,product_name FROM product ORDER BY product_name"
+
+        Dim dbcommand = New MySqlCommand(Sql, Connection)
+
+        Try
+            Connection.Open()
+
+            Dim reader As MySqlDataReader = dbcommand.ExecuteReader()
+            If reader.HasRows Then
+                dt.Load(reader)
+            End If
+            reader.Close()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            Connection.Close()
+        End Try
+
+        Return dt
+    End Function
+    Public Shared Function GetCustomersList() As DataTable
+        Dim dt = New DataTable()
+        Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
+        Dim Sql As String = "SELECT customer_id,customer_name FROM customer ORDER BY customer_name"
+
+        Dim dbcommand = New MySqlCommand(Sql, Connection)
 
         Try
             Connection.Open()

@@ -174,41 +174,41 @@ Partial Class InvoicesAdmin
         'AlmacenesToolStripMenuItem
         '
         Me.AlmacenesToolStripMenuItem.Name = "AlmacenesToolStripMenuItem"
-        Me.AlmacenesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AlmacenesToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
         Me.AlmacenesToolStripMenuItem.Text = "&Almacenes"
         '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(129, 6)
         '
         'CategoríasToolStripMenuItem
         '
         Me.CategoríasToolStripMenuItem.Name = "CategoríasToolStripMenuItem"
-        Me.CategoríasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CategoríasToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
         Me.CategoríasToolStripMenuItem.Text = "&Lineas"
         '
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
         Me.ClientesToolStripMenuItem.Text = "&Clientes"
         '
         'ProductosToolStripMenuItem
         '
         Me.ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
-        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
         Me.ProductosToolStripMenuItem.Text = "&Productos"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(129, 6)
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
         Me.UsuariosToolStripMenuItem.Text = "&Usuarios"
         '
         'ReportesToolStripMenuItem
@@ -313,6 +313,7 @@ Partial Class InvoicesAdmin
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 63)
+        Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect

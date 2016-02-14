@@ -1,5 +1,4 @@
 ﻿Imports MySql.Data.MySqlClient
-
 Public Class CategoryDB
     Public Shared Function GetCategory(categoryID As Integer) As Category
         Dim Category As New Category
@@ -29,7 +28,6 @@ Public Class CategoryDB
 
         Return Category
     End Function
-
     Public Shared Function GetAllCategories() As DataTable
         Dim dt = New DataTable()
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
@@ -53,7 +51,6 @@ Public Class CategoryDB
 
         Return dt
     End Function
-
     Public Shared Function AddCategory(category As Category) As Integer
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "INSERT category " &
@@ -75,7 +72,6 @@ Public Class CategoryDB
             Connection.Close()
         End Try
     End Function
-
     Public Shared Function UpdateCategory(category As Category) As Boolean
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "UPDATE category " &
@@ -98,7 +94,6 @@ Public Class CategoryDB
             Connection.Close()
         End Try
     End Function
-
     Public Shared Function DeleteCategory(category As Category) As Boolean
         Dim Connection As MySqlConnection = MySqlDataBase.GetConnection
         Dim Sql As String = "DELETE FROM category " &
